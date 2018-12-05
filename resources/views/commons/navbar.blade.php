@@ -1,5 +1,5 @@
-<header>
-    <nav class="navbar navbar-expand-am navbar-dark bg-dark">
+<header class="mb-4">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <a class="navbar-brand" href="/" >Microposts</a>
         
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#nav-bar">
@@ -10,14 +10,19 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 @if(Auth::check())
-                    <li class="nav-item"><a href="#" class="nav-link">Users</a></li>
+                    <li class="nav-item">{!! link_to_route('users.index','Users',[],['class' => 'nav-link']) !!}</li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
-                        <ul class="dropldown-menu dropdown-menu-right">
-                            <li class="dropdown-item"><a href="#">My profile</a></li>
-                            <li class="dropdown-divider"></li>
-                            <li class="dropdown-item">{!! link_to_route('logout.get','Logout') !!}</li>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li>{!! link_to_route('users.show','My profile',['id' => Auth::id()],['class'=>'dropdown-item']) !!}</li>
+                            <div role="separator" class="divider"></div>
+                            <li>{!! link_to_route('logout.get','Logout',[],['class'=>'dropdown-item']) !!}</li>
                         </ul>
+                             <ul class="dropdown-menu">
+                            <!--    <li>{!! link_to_route('users.show', 'My profile', ['id' => Auth::id()]) !!}</li>-->
+                            <!--    <li role="separator" class="divider"></li>-->
+                            <!--    <li>{!! link_to_route('logout.get', 'Logout') !!}</li>-->
+                            <!--</ul>-->
                     </li>
                 @else
                     <li class="nav-item">{!! link_to_route('signup.get', 'Signup' ,[],['class'=>'nav-link']) !!}</li>

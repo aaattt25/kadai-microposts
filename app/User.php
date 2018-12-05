@@ -14,6 +14,7 @@ class User extends Authenticatable
      *
      * @var array
      */
+    //$user->microposts()->all() もしくは $user->micropostsで取得可能になる
     protected $fillable = [
         'name', 'email', 'password',
     ];
@@ -26,4 +27,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+    
+    //これはマジックメソッドを使っているため
+    //$micropost->user()->first() もしくは $micropost->user でユ－ザ－情報取れるらしい
+    public function microposts()
+    {
+        return $this->hasMany(Micropost::class);
+    }
 }
