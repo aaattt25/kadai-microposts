@@ -25,7 +25,7 @@ Route::get('logout','Auth\LoginController@logout')->name('logout.get');
 
 // ユーザー機能
 //ルーティンググループで認証した人だけfunction以下のルーティングできる
-Route::group([],function(){
+Route::group(['middleware' => 'auth'],function(){
     Route::resource('users','UsersController',['only' => ['index', 'show']]);
     Route::resource('microposts','MicropostsController',['only'=>['store','destroy']]);
 });

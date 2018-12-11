@@ -9,7 +9,7 @@
                         <h3 class="card-title">{{Auth::user()->name }}</h3>
                     </div>
                     <div class="card-body">
-                        <img class="media-object rounded img-fluid" sre="{{ Gravatar::src(Auth::user()->email, 500) }}" alt="">
+                        <img class="media-object rounded img-fluid" src="{{ Gravatar::src(Auth::user()->email, 500) }}" alt="">
                     </div>
                 </div>
             </aside>

@@ -11,12 +11,14 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
-   
+   //count()は配列の要素数を数え数値で返してくれる関数
+   //counts()はこれから定義する自分で作る関数
+   //連想配列で返す["microposts"]=>5
     public function counts($user) {
         $count_microposts = $user->microposts()->count();
     
         return [
-            'count_microposts' => $count_microposts,    
+            'count_microposts' => $count_microposts,
         ];
     }
 }

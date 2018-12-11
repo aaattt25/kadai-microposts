@@ -11,6 +11,7 @@ class MicropostsController extends Controller
         $data =[];
         if(\Auth::check()){
             $user = \Auth::user();
+            // User はmicroposts()メソッドでhasmanyなmicropostsを取得できる
             $microposts = $user->microposts()->orderBy('created_at','desc')->paginate(10);
             
             $data = [

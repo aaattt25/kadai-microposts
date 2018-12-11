@@ -14,6 +14,7 @@
         </aside>
         <div class="col-sm-8">
             <ul class="nav nav-tabs nav-justified mb-3">
+                <!--ナビタブの記述　ヘルパー関数でルートをnameで指定　idという変数名でidルートに渡している　ナビタブの個々につけるクラスにブーリアンでidついてたらアクティブつけてねという記述-->
                 <li class="nav-item"><a href="{{ route('users.show', ['id' => $user->id]) }}" class="nav-link {{ Request::is('users/' . $user->id) ? 'active' : '' }}">TimeLine <span class="badge badge-secondary">{{ $count_microposts }}</span></a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Followings</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Followers</a></li>
@@ -21,8 +22,8 @@
             @if (Auth::id() == $user->id)
                 {!! Form::open(['route' => 'microposts.store'])  !!}
                     <div class="form-group">
-                        {!! Form::textarea('count', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
-                        {!! Form ::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
+                        {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
+                        {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
                     </div>
                  {!! Form::close() !!}
             @endif
