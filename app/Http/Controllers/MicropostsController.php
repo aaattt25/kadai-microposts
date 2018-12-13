@@ -12,8 +12,9 @@ class MicropostsController extends Controller
         if(\Auth::check()){
             $user = \Auth::user();
             // User はmicroposts()メソッドでhasmanyなmicropostsを取得できる
-            $microposts = $user->microposts()->orderBy('created_at','desc')->paginate(10);
-            
+            //feed_microposts()で自分+フォローしている人のmicropostsを取得できる
+            $microposts = $user->feed_microposts()->orderBy('created_at','desc')->paginate(10);
+           
             $data = [
                 'user' => $user,
                 'microposts' => $microposts,

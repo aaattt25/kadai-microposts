@@ -93,4 +93,12 @@ class User extends Authenticatable
         //exists();はbool型で任意のレコードが存在しているかしていないかを返してくれる
         return $this->followings()->where('follow_id', $userId)->exists();
     }
+    
+    public function feed_microposts()
+    {
+        $follow_user_ids = $this->followings()->pluck('users.id')->toArray();
+        //　自分のidも配列に加えているよ
+        $follow_user_ids[] = $this->id;
+        return Micropost::whereIn('user_id', $follow_user_ids);
+    }
 }
