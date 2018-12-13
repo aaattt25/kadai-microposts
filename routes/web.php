@@ -27,5 +27,17 @@ Route::get('logout','Auth\LoginController@logout')->name('logout.get');
 //ルーティンググループで認証した人だけfunction以下のルーティングできる
 Route::group(['middleware' => 'auth'],function(){
     Route::resource('users','UsersController',['only' => ['index', 'show']]);
+    
+    // 前にIdをつけフォロー/アンフォローをルーティング
+    Route::group(['prefix' => 'users/{id}'], function(){
+        Route::post('follow','UserFollowController@store')->name('user.follow');
+        Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
+    // 前にIdをつけフォローしている人を一覧表示するルーティング
+        Route::get('followings','UsersController@followings')->name('users.followings');
+     // 前にIdをつけフォロワーを一覧表示するルーティング
+        Route::get('followers','UsersController@followers')->name('users.followers');
+        
+    });
+    
     Route::resource('microposts','MicropostsController',['only'=>['store','destroy']]);
 });
