@@ -37,7 +37,7 @@ Route::group(['middleware' => 'auth'],function(){
      // 前にIdをつけフォロワーを一覧表示するルーティング
         Route::get('followers','UsersController@followers')->name('users.followers');
      //お気に入りの機能@favoritesアクション
-     Route::get('favarites','UsersController@favorites')->name('users.favorites');
+     Route::get('favorites','UsersController@favorites')->name('users.favorites');
     });
     
     // 追加

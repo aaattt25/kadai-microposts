@@ -79,10 +79,13 @@ class UsersController extends Controller
         $favorites = $user->feed_favorites()->paginate(10);
 
         $data = [
-            'user' => $user,
-            'favorites' => $favorites,
+            'user' => $user,           //お気に入りポストを書いた人のid　自分ではない　一人の人のid
+            'favorites' => $favorites, // お気に入りにしたポストたち
             ];    
-        $data += $this->counts($user);
+        $data += $this->counts($user);  //これ何している？以下を配列に足してる
+         //'count_microposts' => $count_microposts,
+         // 'count_followings' => $count_followings,
+         // 'count_followers' => $count_followers,
    
        return view('users.favorites', $data);
    }

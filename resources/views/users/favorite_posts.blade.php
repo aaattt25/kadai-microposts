@@ -8,7 +8,8 @@
                         {{ $favorite->content }}
                     </div>
                     <div>
-                        <p>{!! link_to_route('users.show','View profile', ['id' => $user->id]) !!}</p>
+                        @include('favorite.favorite_button', ['micropost' => $favorite])
+                        <p>{!! link_to_route('users.show','View profile', ['id' => $favorite->user->id]) !!}</p>
                     </div>
                 </div>
             </li>
