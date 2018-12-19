@@ -51,10 +51,11 @@ class MicropostsController extends Controller
     {
         $user = User::find($id);
         $microposts = $user->microposts()->orderBy('created_at','desc')->pagenate(10);
-
+        $favorites = $user->feed_favorites()->orderBy('created_at','desc')->gaginate(10);
         $data = [
           'user' => $user,
           'microposts' => $microposts,
+          'favorites' => $favorites,
         ];
         
         $data += $this->counts($user);

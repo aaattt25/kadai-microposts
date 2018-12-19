@@ -15,6 +15,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li>{!! link_to_route('users.show','My profile',['id' => Auth::id()],['class'=>'dropdown-item']) !!}</li>
+                            <li>{!! link_to_route('users.favorites','Favorites',['id' => Auth::id()],['class'=>'dropdown-item']) !!}</li>
                             <div role="separator" class="divider"></div>
                             <li>{!! link_to_route('logout.get','Logout',[],['class'=>'dropdown-item']) !!}</li>
                         </ul>

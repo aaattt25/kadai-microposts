@@ -36,8 +36,14 @@ Route::group(['middleware' => 'auth'],function(){
         Route::get('followings','UsersController@followings')->name('users.followings');
      // 前にIdをつけフォロワーを一覧表示するルーティング
         Route::get('followers','UsersController@followers')->name('users.followers');
-        
+     //お気に入りの機能@favoritesアクション
+     Route::get('favarites','UsersController@favorites')->name('users.favorites');
     });
     
+    // 追加
+    Route::group(['prefix' => 'microposts/{id}'], function(){
+       Route::post('favorite', 'FavoritesController@store')->name('favorites.favorite');
+       Route::delete('unfavorite','FavoritesController@destroy')->name('favorites.unfavorite');
+    });
     Route::resource('microposts','MicropostsController',['only'=>['store','destroy']]);
 });

@@ -4,14 +4,14 @@
     <div class="row">
         <aside class="col-sm-4">
             <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">{{$user->name }}</h3>
-                </div>
-                <div class="card-body">
-                    <img class="media-object rounded img-fluid" src="{{ Gravatar::src($user->email, 500) }}" alt="">
-                </div>
+               <div class="card-header">
+                   <h3 class="card-title">{{ $user->name }}</h3>
+               </div>
+               <div class="card-body">
+                   <img class="media-object rounded img-fluid" src="{{ Gravatar::src($user->email, 500) }}" alt="">
+               </div>
             </div>
-            @include('user_follow.follow_button', ['user' => $user])
+           @include('user_follow.follow_button', ['user' => $user])
         </aside>
         <div class="col-sm-8">
             <ul class="nav nav-tabs nav-justified mb-3">
@@ -20,7 +20,7 @@
                 <li class="nav-item"><a href="{{ route('users.followers', ['id' => $user->id]) }}" class="nav-link {{ Request::is('users/*/followers') ? 'active' : '' }}">Followers <span class="badge badge-secondary">{{ $count_followers }}</span></a></li>
                 <li class="nav-item"><a href="{{ route('users.favorites', ['id' => $user->id]) }}" class="nav-link {{ Request::is('users/*/favorites') ? 'active' : '' }}">Favorites <span class="badge badge-secondary">{{ $count_favorites }}</span></a></li>
             </ul>
-            @include('users.users', ['users' => $users])
+             @include('users.favorite_posts', ['user' => $user, 'favorites'=>$favorites])
         </div>
     </div>
 @endsection
