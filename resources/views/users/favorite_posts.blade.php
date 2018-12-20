@@ -7,9 +7,11 @@
                     <div>
                         {{ $favorite->content }}
                     </div>
-                    <div>
-                        @include('favorite.favorite_button', ['micropost' => $favorite])
+                    <div class="mb-4">
+                        
+                        <p>{!! link_to_route('users.show',$favorite->user->name, ['id' => $favorite->user->id]) !!}</p>
                         <p>{!! link_to_route('users.show','View profile', ['id' => $favorite->user->id]) !!}</p>
+                        @include('favorite.favorite_button', ['micropost' => $favorite])
                     </div>
                 </div>
             </li>
